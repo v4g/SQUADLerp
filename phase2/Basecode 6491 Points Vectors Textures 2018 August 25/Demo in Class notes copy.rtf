@@ -1,0 +1,109 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red251\green2\blue7;\red251\green2\blue7;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c14913\c0;\cssrgb\c100000\c14913\c0;}
+{\info
+{\author Jarek Rossignac}
+{\*\company Georgia Tech}
+{\*\copyright 2018}}\margl1440\margr1440\vieww17760\viewh20940\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 In-class demo of P1 base code\
+run\
+discuss help page: Name, pix, space, animation\
+SPACE\
+a, takes 3 secs\
+# showLabels\
+v vectors AB, DC\
+l: toggle LERP\
+s: toggle bad LPM\
+\
+click near control point P to select it and drag \'93teleport\'94 P=P+WM, M= mouse now, W=where mouse was previously\
+x + click&drag: teleport all: \{A,B,C,D\} +=WM \
+z+click&drag (or wheel) to soon: A=O+sOA. where O = screen Center\
+\
+\cf2 put pictures of students in data folder\
+\cf0 \
+TABS\
+\
+TAB help\
+\cf3 11-12: Change Names and put pictures of students in data folder\cf0 \
+\
+TAB main\
+53-54: PNT[] Point = new PNT[pointsCountMax]; global array of 4 control points\
+60: setup()\
+69: Setup(): readPoints("data/points.pts");\
+54-55: PNT A, B, C, D, P; New variables with more convenient names, pointing to Point[], not copies\
+76: draw()\
+85: draw(): A=Point[0]; each time\
+125-136: Draw control points: showLabelInCircle(A,"A");  OR drawCircle(A,6);\
+\
+GUI TAB\
+7: keyPressed(), toggle showlabels of control points\
+122-124 MousePressed() pointer P set to point to closest control point\
+136: mouseDragged() P.teleport(); ** demo\
+\
+TAB points\
+2-10: PNT class, x, y, \
+7: teleport moveBy\
+8-9: setT0=o\
+18: LERP  : L(A,t,B) = A+tAB\
+\
+TAB edges\
+1-6 Class EDGE [A,B]\
+5: PNTnearB\
+7: E(P,Q) returns [P,Q]\
+9-10: draw edge\
+12-17: LERP endpoints\
+20-29: *WRONG* LPM: You fix it: compute and use F\
+\
+TAB main\
+88-91: if animating change time\
+95: if loaded file with 4 control points\
+97-98: E0=[A,B], E1=\{D,C]\
+103: show edges as arrows (toggled by \'91v\'92 in TAB gui line 53)\
+106-113: LERP (toggled by \'91l\'92)\
+111: write label\
+115-122: WRONG LMP (toggled by \'92s\'92)\
+\
+TAB gui\
+22: \'914\'92 makeFourSquares(); (in TAB points 50-60)\
+76: \'91R\'92 readPoints("data/"+PicturesFileName+".pts"); (initialized to "SixteenPoints" in TAB main line 19)\
+DEMO \'914\'92, \'91R\'92, \'92t\'92, \'92r\'92\
+144:  if(pointsCount==16)\
+147: draw 4 quads, color ramp!\
+148: draw (grey) polygonal path through corresponding vertices\
+152-162: draw labels or disks\
+168: vertices of current quad\
+168:  if showLERP for quads\
+182: if showLMP  for quads\
+167 & 170:	rewrite using QUAD objects \
+173 show moving quad textured by face of student 1\
+178 show animated quad filled in yellow (see TAB points line 28) Use YOUR CODE FOR THIS\
+DEMO: \'92s\'92, \'91l\'92 to show/hide both, \'91f\'92 to toggle fill\
+\
+TAB quads\
+1: morphQuads\
+Make class QUADS\
+Provide construction from 4 points\
+Provide display method to draw or draw filled with texture\
+Provide LERP (QUAD Q0, float t, QUAD Q1)\
+Provide LPM (QUAD Q0, float t, QUAD Q1) \
+	using 4 Log Polar Morphs between corresponding edges \
+	and averaging the two results for each vertex\
+Make a version (with a toggle) to see if using LMP of diagonals improves\
+Fix main 168-194 to use QUAD objects\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
